@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Text Generator</h1>
+  <div class="form-group">
+    <label for="userInput">Enter your text:</label>
+    <textarea id="userInput" [(ngModel)]="userInput" rows="3" class="form-control"></textarea>
+  </div>
+  <button (click)="generateText()" class="btn btn-primary">Generate Text</button>
+  <div class="chat-window">
+    <div *ngFor="let message of messages" [ngClass]="{'user-message': message.sender === 'user', 'bot-message': message.sender === 'bot'}">
+      <p>{{ message.text }}</p>
+    </div>
+  </div>
+  <div class="error" *ngIf="errorMessage">
+    <h2>Error:</h2>
+    <p>{{ errorMessage }}</p>
+  </div>
+</div>

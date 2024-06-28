@@ -1,0 +1,24 @@
+<div class="pricing-container">
+  <h1 class="heading">Subscribe Us to Access More Benefits</h1>
+  <div class="cards">
+    <div class="card" *ngFor="let plan of plans; let i = index">
+      <div class="bg"></div>
+      <div class="blob"></div>
+      <div class="content">
+        <h2>{{ plan.name }}</h2>
+        <p>{{ plan.price }}</p>
+        <button (click)="addToCart(plan)">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+  <div class="cart">
+    <h2>Cart</h2>
+    <ul>
+      <li *ngFor="let item of cart; let i = index">
+        <span>{{ item.name }} - {{ item.price }}</span>
+        <button (click)="removeFromCart(i)">Delete</button>
+        <button [routerLink]="['/pay', item]" [queryParams]="{ name: item.name, price: item.price }">Pay</button>
+      </li>
+    </ul>
+  </div>
+</div>
